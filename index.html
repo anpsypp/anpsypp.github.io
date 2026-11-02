@@ -203,7 +203,17 @@
   /* абзац перед списком: подпись к списку, а не его первый пункт */
   .list-intro { margin-bottom: 20px; font-family: var(--serif); font-size: 1.15rem; line-height: 1.6; }
   .signs { list-style: none; margin: 0 0 1.4em; padding: 0; max-width: 58ch; }
-  .signs li { padding: 12px 0; border-top: 1px solid var(--line); }
+  .signs li { position: relative; padding: 12px 0 12px 22px; border-top: 1px solid var(--line); }
+  .signs li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: calc(12px + 0.85em - 2.5px);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent-hover);
+  }
   .signs li:last-child { border-bottom: 1px solid var(--line); }
 
   .format {
