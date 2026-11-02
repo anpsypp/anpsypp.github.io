@@ -3,102 +3,396 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Царькова А.Д. — психолог</title>
-<meta name="description" content="Психолог. Работаю с эмоциональным онемением и состояниями отключённости. Индивидуальные консультации.">
+<title>Анастасия Царькова — психолог, телесно-ориентированная терапия</title>
+<meta name="description" content="Психолог Анастасия Царькова. Работаю с эмоциональным онемением и состояниями отключённости. Телесно-ориентированная терапия, онлайн и очно в Ереване.">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Анастасия Царькова — психолог">
+<meta property="og:description" content="Эмоциональное онемение, отключённость, телесно-ориентированная терапия. Онлайн и очно в Ереване.">
+<meta property="og:image" content="hero.jpg">
+<meta property="og:type" content="website">
 <style>
   :root {
-    --fog: #dde2e4;
-    --ink: #1f2a33;
-    --slate: #55656f;
-    --deep: #2c4757;
-    --deep-hover: #20384a;
-    --paper: #f3f5f5;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --fog: #1a2228;
-      --ink: #e4e9eb;
-      --slate: #9aa9b3;
-      --deep: #8fb3c7;
-      --deep-hover: #a9c6d6;
-      --paper: #11171b;
-    }
+    --bg: #221e1f;
+    --bg-soft: #2a2526;
+    --line: rgba(233, 228, 222, 0.16);
+    --text: #e9e4de;
+    --muted: #a8a09a;
+    --accent: #c4503d;
+    --accent-hover: #d9654f;
+    --serif: Georgia, "Times New Roman", "Noto Serif", serif;
+    --sans: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 
   * { box-sizing: border-box; }
-  html, body { height: 100%; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: var(--fog);
-    color: var(--ink);
-    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6;
-    display: flex;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  img { display: block; max-width: 100%; height: auto; }
+  :focus-visible { outline: 3px solid var(--accent-hover); outline-offset: 3px; }
+
+  .wrap { width: 100%; max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* top navigation */
+  .nav { padding: 22px 0; }
+  .nav .wrap { display: flex; flex-wrap: wrap; gap: 8px 26px; }
+  .nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .nav a:hover { color: var(--text); }
+
+  /* hero */
+  .hero { padding: 24px 0 72px; }
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
     align-items: center;
-    justify-content: center;
-    padding: 24px;
   }
-
-  main {
-    width: 100%;
-    max-width: 560px;
-  }
-
   h1 {
-    margin: 0 0 20px;
-    font-family: Georgia, "Times New Roman", serif;
+    margin: 0 0 18px;
+    font-family: var(--serif);
     font-weight: 400;
-    font-size: clamp(2.6rem, 11vw, 4.2rem);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    /* the one memorable moment: the name comes into focus */
+    font-size: clamp(2.8rem, 8.4vw, 5.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    /* the one moment of motion: the name comes into focus */
     animation: focus 2.4s ease-out both;
   }
-
   @keyframes focus {
     from { filter: blur(14px); opacity: 0.25; }
     to   { filter: blur(0);    opacity: 1; }
   }
-
   .role {
-    margin: 0 0 8px;
-    font-size: 1.15rem;
-    color: var(--ink);
+    margin: 0 0 22px;
+    font-size: 1.2rem;
+    color: var(--text);
   }
-
-  .about {
-    margin: 0 0 36px;
-    max-width: 44ch;
-    color: var(--slate);
+  .lead {
+    margin: 0 0 32px;
+    max-width: 46ch;
+    color: var(--muted);
   }
+  .hero-photo {
+    margin: 0;
+    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%);
+    -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(to bottom, #000 70%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%);
+            mask-composite: intersect;
+  }
+  .hero-photo img { width: 100%; }
 
-  .button {
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
     display: inline-block;
-    padding: 14px 24px;
-    border-radius: 4px;
-    background: var(--deep);
-    color: var(--paper);
+    padding: 13px 22px;
+    border-radius: 3px;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: #fff;
     text-decoration: none;
     font-size: 1rem;
-    transition: background-color 0.15s;
+    transition: background-color 0.15s, border-color 0.15s;
   }
-  .button:hover { background: var(--deep-hover); }
-  .button:focus-visible {
-    outline: 3px solid var(--ink);
-    outline-offset: 3px;
-  }
+  .btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+  .btn.ghost { background: transparent; color: var(--text); border-color: var(--line); }
+  .btn.ghost:hover { border-color: var(--text); background: transparent; }
 
+  /* sections */
+  section { padding: 72px 0; border-top: 1px solid var(--line); }
+  h2 {
+    margin: 0 0 28px;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.9rem, 4.6vw, 2.6rem);
+    line-height: 1.15;
+  }
+  h3 {
+    margin: 0 0 8px;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.3rem;
+  }
+  p { margin: 0 0 1.1em; }
+  .text { max-width: 58ch; }
+  .muted { color: var(--muted); }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .split.reverse .photo { order: -1; }
+  .photo img { width: 100%; border-radius: 2px; }
+
+  .signs { list-style: none; margin: 0 0 1.4em; padding: 0; max-width: 58ch; }
+  .signs li { padding: 14px 0; border-top: 1px solid var(--line); }
+  .signs li:last-child { border-bottom: 1px solid var(--line); }
+
+  .formats { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; margin-top: 8px; }
+  .format { padding-top: 18px; border-top: 1px solid var(--accent); }
+  .format p { color: var(--muted); margin: 0; }
+
+  /* education: deliberately quiet */
+  details.edu { margin-top: 36px; max-width: 58ch; border-top: 1px solid var(--line); padding-top: 16px; }
+  details.edu summary {
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 0.95rem;
+    list-style: none;
+  }
+  details.edu summary::-webkit-details-marker { display: none; }
+  details.edu summary::before { content: "+ "; }
+  details.edu[open] summary::before { content: "− "; }
+  details.edu ul { margin: 16px 0 0; padding-left: 1.1em; color: var(--muted); font-size: 0.98rem; }
+  details.edu li { margin-bottom: 6px; }
+  .docs { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 18px; }
+  .docs a { display: block; }
+  .docs img { border-radius: 2px; border: 1px solid var(--line); }
+
+  /* publications */
+  .pubs { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+  .pub {
+    display: block;
+    padding: 24px;
+    background: var(--bg-soft);
+    border-radius: 3px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+  .pub:hover { border-color: var(--accent); }
+  .pub p { color: var(--muted); margin: 0; }
+
+  /* contacts */
+  .contact-links { list-style: none; margin: 28px 0 0; padding: 0; max-width: 420px; }
+  .contact-links li { border-top: 1px solid var(--line); }
+  .contact-links li:last-child { border-bottom: 1px solid var(--line); }
+  .contact-links a {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    text-decoration: none;
+  }
+  .contact-links a:hover { color: var(--accent-hover); }
+  .contact-links span { color: var(--muted); font-size: 0.95rem; }
+
+  footer { padding: 40px 0 56px; border-top: 1px solid var(--line); }
+  footer p { margin: 0 0 8px; color: var(--muted); font-size: 0.9rem; max-width: 70ch; }
+
+  [hidden] { display: none !important; }
+
+  @media (max-width: 760px) {
+    .hero .wrap, .split { grid-template-columns: 1fr; gap: 32px; }
+    .hero-photo { order: -1; max-width: 420px; }
+    .split.reverse .photo { order: 0; }
+    .photo { max-width: 460px; }
+    section { padding: 56px 0; }
+  }
   @media (prefers-reduced-motion: reduce) {
     h1 { animation: none; }
+    html { scroll-behavior: auto; }
   }
 </style>
 </head>
 <body>
-  <main>
-    <h1>Царькова А.Д.</h1>
-    <p class="role">Психолог</p>
-    <p class="about">Работаю с эмоциональным онемением и состояниями отключённости. Принимаю на индивидуальных консультациях.</p>
-    <a class="button" href="https://t.me/anpsypp">Канал «Царство сонных» в Telegram</a>
-  </main>
+
+<nav class="nav" aria-label="Разделы сайта">
+  <div class="wrap">
+    <a href="#approach">Подход</a>
+    <a href="#about">Обо мне</a>
+    <a href="#formats">Форматы</a>
+    <a href="#publications">Публикации</a>
+    <a href="#contacts">Контакты</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Анастасия Царькова</h1>
+      <p class="role">Психолог. Телесно-ориентированная терапия</p>
+      <p class="lead">Работаю с эмоциональным онемением и состояниями отключённости. Принимаю онлайн и очно в Ереване.</p>
+      <div class="actions">
+        <a class="btn" data-link="telegramContact">Написать в Telegram</a>
+        <a class="btn" data-link="whatsapp">Написать в WhatsApp</a>
+        <a class="btn ghost" data-link="telegramChannel">Канал «Царство сонных»</a>
+      </div>
+    </div>
+    <figure class="hero-photo">
+      <img src="hero.jpg" width="1000" height="1400" alt="Анастасия Царькова, психолог">
+    </figure>
+  </div>
+</header>
+
+<main>
+
+<section id="approach">
+  <div class="wrap split">
+    <div>
+      <h2>С чем ко мне приходят</h2>
+      <ul class="signs">
+        <li>Эмоций будто нет или они приглушены: ни радости, ни злости, ни грусти.</li>
+        <li>Ощущение, что смотришь на свою жизнь со стороны.</li>
+        <li>Голова работает отлично, дела делаются, а внутри нет отклика.</li>
+        <li>После долгого напряжения ничего не включается обратно.</li>
+      </ul>
+      <p class="text">Обычно это люди, которые много думают, хорошо справляются и не очень верят в «поговорите о детстве, и всё пройдёт». Мне это понятно, я сама так работаю: сначала разобраться, как всё устроено, потом проверять на практике.</p>
+      <p class="text">Когда чувств не слышно, разговоров о чувствах часто недостаточно. Поэтому я работаю через тело: внимание к ощущениям, к дыханию, к тому, где именно в теле «выключено». Разговор остаётся, но тело становится ещё одним источником информации. Между встречами я даю небольшие практики и наблюдения, чтобы работа не заканчивалась на сессии.</p>
+    </div>
+    <div class="photo">
+      <img src="approach.jpg" width="900" height="1260" loading="lazy" alt="Практика с вниманием к телу: рука на груди">
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap split reverse">
+    <div class="photo">
+      <img src="about.jpg" width="900" height="1260" loading="lazy" alt="Анастасия Царькова">
+    </div>
+    <div>
+      <h2>Обо мне</h2>
+      <!-- ЧЕРНОВИК: текст собран из немногих известных фактов. Заменить на реальную историю. -->
+      <p class="text">В психологию я пришла из прикладной информатики. Привыкла иметь дело со сложными системами и искать, где именно что-то ломается. С людьми это работает иначе, но привычка не принимать ничего на веру осталась.</p>
+      <p class="text">Первое время я больше занималась выгоранием. Постепенно стало ясно, что самое интересное и самое недооценённое лежит глубже: состояния, когда человек перестаёт чувствовать. Именно с ними я сейчас работаю чаще всего.</p>
+      <p class="text">Метод, на который я опираюсь, телесно-ориентированная терапия. Я училась в рамках интегративной психологии и по-прежнему считаю, что одним методом всё не решается, поэтому подход к каждому человеку собираю отдельно.</p>
+
+      <details class="edu">
+        <summary>Образование и документы</summary>
+        <ul>
+          <li>Высшее образование: прикладная информатика</li>
+          <li>Профессиональная переподготовка по психологии</li>
+          <li>Обучение интегративной психологии, телесно-ориентированная терапия</li>
+        </ul>
+        <div class="docs" id="docs"></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="formats">
+  <div class="wrap">
+    <h2>Как мы можем работать</h2>
+    <div class="formats">
+      <div class="format">
+        <h3>Онлайн</h3>
+        <p>Индивидуальные консультации из любой точки мира. Нужны только связь и место, где вас никто не прервёт.</p>
+      </div>
+      <div class="format">
+        <h3>Очно в Ереване</h3>
+        <p>Индивидуальные встречи. Для телесной работы живой формат даёт больше, но онлайн тоже работает.</p>
+      </div>
+      <div class="format">
+        <h3>Практики между встречами</h3>
+        <p>В обоих форматах вы получаете небольшие практики и задания на наблюдение, чтобы замечать изменения в обычной жизни.</p>
+      </div>
+    </div>
+    <p class="text muted" style="margin-top: 36px;">Чтобы записаться, напишите мне в Telegram или WhatsApp. Коротко опишите, что происходит, и мы договоримся о времени.</p>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <h2>Публикации</h2>
+    <div class="pubs">
+      <a class="pub" data-link="b17">
+        <h3>Статьи на б17</h3>
+        <p>Тексты об эмоциональном онемении, диссоциации, тревоге и поиске себя.</p>
+      </a>
+      <a class="pub" data-link="youtube">
+        <h3>Видео на YouTube</h3>
+        <p>Разбор темы в формате видео.</p>
+      </a>
+      <a class="pub" data-link="telegramChannel">
+        <h3>Канал «Царство сонных»</h3>
+        <p>Мои основные тексты и размышления выходят здесь.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="wrap split">
+    <div>
+      <h2>Контакты</h2>
+      <p class="text">Проще всего написать в мессенджер. Отвечаю лично.</p>
+      <ul class="contact-links">
+        <li data-wrap="telegramContact"><a data-link="telegramContact">Telegram <span>написать</span></a></li>
+        <li data-wrap="whatsapp"><a data-link="whatsapp">WhatsApp <span>написать</span></a></li>
+        <li data-wrap="telegramChannel"><a data-link="telegramChannel">Telegram-канал <span>читать</span></a></li>
+        <li data-wrap="youtube"><a data-link="youtube">YouTube <span>смотреть</span></a></li>
+        <li data-wrap="instagram"><a data-link="instagram">Instagram <span>смотреть</span></a></li>
+        <li data-wrap="b17"><a data-link="b17">б17 <span>профиль</span></a></li>
+      </ul>
+    </div>
+    <div class="photo">
+      <img src="contact.jpg" width="800" height="1120" loading="lazy" alt="Анастасия Царькова">
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Анастасия Царькова (Царькова А.Д.), психолог.</p>
+    <p>Консультация психолога не заменяет медицинскую помощь. Если вам нужна срочная помощь, обратитесь в местную службу экстренной помощи.</p>
+  </div>
+</footer>
+
+<script>
+  /* ============================================================
+     ССЫЛКИ И ДОКУМЕНТЫ. Здесь меняется всё, что зависит от вас.
+     Пустая ссылка ("") просто скрывает кнопку на сайте.
+     ============================================================ */
+  var LINKS = {
+    telegramChannel: "https://t.me/anpsypp",
+    telegramContact: "",   // личный Telegram для записи, например "https://t.me/ваш_ник"
+    whatsapp: "",          // например "https://wa.me/374XXXXXXXX" (номер без плюса и пробелов)
+    youtube: "",           // ссылка на канал или видео
+    instagram: "",         // например "https://instagram.com/ваш_ник"
+    b17: "https://www.b17.ru/tsarkova_anastasiya/"
+  };
+
+  /* Сканы документов: положите файлы рядом с index.html и перечислите здесь,
+     например: [{src: "diploma-1.jpg", alt: "Диплом о переподготовке"}] */
+  var DOCS = [];
+
+  document.querySelectorAll("[data-link]").forEach(function (el) {
+    var url = LINKS[el.getAttribute("data-link")];
+    if (url) {
+      el.setAttribute("href", url);
+      el.setAttribute("target", "_blank");
+      el.setAttribute("rel", "noopener");
+    } else {
+      el.hidden = true;
+    }
+  });
+  document.querySelectorAll("[data-wrap]").forEach(function (el) {
+    if (!LINKS[el.getAttribute("data-wrap")]) { el.hidden = true; }
+  });
+
+  var docsBox = document.getElementById("docs");
+  DOCS.forEach(function (d) {
+    var a = document.createElement("a");
+    a.href = d.src; a.target = "_blank"; a.rel = "noopener";
+    var img = document.createElement("img");
+    img.src = d.src; img.alt = d.alt || "Документ об образовании"; img.loading = "lazy";
+    a.appendChild(img); docsBox.appendChild(a);
+  });
+  if (!DOCS.length) { docsBox.hidden = true; }
+</script>
 </body>
 </html>
