@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Анастасия Царькова — психолог, телесно-ориентированная терапия</title>
-<meta name="description" content="Психолог Анастасия Царькова. Работаю с эмоциональным онемением и состояниями отключённости. Телесно-ориентированная терапия, онлайн и очно в Ереване.">
+<title>Анастасия Царькова — психолог-консультант, телесно-ориентированный подход</title>
+<meta name="description" content="Анастасия Царькова, психолог-консультант. Телесно-ориентированный подход. Консультации онлайн и очно в Ереване.">
 <meta name="color-scheme" content="dark">
 <meta property="og:title" content="Анастасия Царькова — психолог">
-<meta property="og:description" content="Эмоциональное онемение, отключённость, телесно-ориентированная терапия. Онлайн и очно в Ереване.">
+<meta property="og:description" content="Психолог-консультант. Телесно-ориентированный подход. Онлайн и очно в Ереване.">
 <meta property="og:image" content="hero.jpg">
 <meta property="og:type" content="website">
 <style>
@@ -105,6 +105,7 @@
     transition: background-color 0.15s, border-color 0.15s;
   }
   .btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+  .btn.big { padding: 16px 28px; font-size: 1.1rem; }
   .btn.ghost { background: transparent; color: var(--text); border-color: var(--line); }
   .btn.ghost:hover { border-color: var(--text); background: transparent; }
 
@@ -134,15 +135,47 @@
     align-items: center;
   }
   .split.reverse .photo { order: -1; }
-  .photo img { width: 100%; border-radius: 2px; }
+  .photo img { width: 100%; }
+  /* photos dissolve into the page instead of sitting in a rectangle */
+  .photo.soft {
+    -webkit-mask-image: radial-gradient(ellipse 72% 68% at 50% 46%, #000 52%, transparent 100%);
+            mask-image: radial-gradient(ellipse 72% 68% at 50% 46%, #000 52%, transparent 100%);
+  }
+
+  /* approach: the photo is the background of the whole block */
+  #approach { position: relative; overflow: hidden; }
+  #approach .bg-photo {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 56%;
+    background: url("approach.jpg") center 30% / cover no-repeat;
+    opacity: 0.45;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 60%), linear-gradient(to bottom, transparent 0, #000 22%, #000 78%, transparent 100%);
+    -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(to right, transparent 0, #000 60%), linear-gradient(to bottom, transparent 0, #000 22%, #000 78%, transparent 100%);
+            mask-composite: intersect;
+    pointer-events: none;
+  }
+  #approach .wrap { position: relative; z-index: 1; }
 
   .signs { list-style: none; margin: 0 0 1.4em; padding: 0; max-width: 58ch; }
-  .signs li { padding: 14px 0; border-top: 1px solid var(--line); }
+  .signs li { padding: 12px 0; border-top: 1px solid var(--line); }
   .signs li:last-child { border-bottom: 1px solid var(--line); }
 
-  .formats { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; margin-top: 8px; }
-  .format { padding-top: 18px; border-top: 1px solid var(--accent); }
-  .format p { color: var(--muted); margin: 0; }
+  .format {
+    display: grid;
+    grid-template-columns: 1fr 1.7fr;
+    gap: 16px 48px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+  }
+  .format:first-of-type { border-top-color: var(--accent); }
+  .format .head p { margin: 0 0 4px; }
+  .format .meta { color: var(--muted); font-size: 0.95rem; }
+  .format .price { font-family: var(--serif); font-size: 1.35rem; line-height: 1.35; margin: 10px 0 6px; }
+  .format .body p { max-width: 58ch; color: var(--muted); }
+  .terms { list-style: none; margin: 12px 0 0; padding: 24px 0 0; border-top: 1px solid var(--line); max-width: 66ch; }
+  .terms li { margin-bottom: 10px; color: var(--muted); }
 
   /* education: deliberately quiet */
   details.edu { margin-top: 36px; max-width: 58ch; border-top: 1px solid var(--line); padding-top: 16px; }
@@ -155,11 +188,11 @@
   details.edu summary::-webkit-details-marker { display: none; }
   details.edu summary::before { content: "+ "; }
   details.edu[open] summary::before { content: "− "; }
-  details.edu ul { margin: 16px 0 0; padding-left: 1.1em; color: var(--muted); font-size: 0.98rem; }
-  details.edu li { margin-bottom: 6px; }
-  .docs { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 18px; }
-  .docs a { display: block; }
-  .docs img { border-radius: 2px; border: 1px solid var(--line); }
+  details.edu ul { margin: 16px 0 0; padding-left: 0; list-style: none; color: var(--muted); font-size: 0.98rem; }
+  details.edu li { margin-bottom: 12px; line-height: 1.5; }
+  details.edu .hours { color: var(--text); }
+  details.edu li a { color: var(--muted); text-decoration-color: var(--line); text-underline-offset: 3px; white-space: nowrap; }
+  details.edu li a:hover { color: var(--text); }
 
   /* publications */
   .pubs { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
@@ -176,7 +209,7 @@
   .pub p { color: var(--muted); margin: 0; }
 
   /* contacts */
-  .contact-links { list-style: none; margin: 28px 0 0; padding: 0; max-width: 420px; }
+  .contact-links { list-style: none; margin: 36px 0 0; padding: 0; max-width: 420px; }
   .contact-links li { border-top: 1px solid var(--line); }
   .contact-links li:last-child { border-bottom: 1px solid var(--line); }
   .contact-links a {
@@ -188,6 +221,7 @@
   .contact-links a:hover { color: var(--accent-hover); }
   .contact-links span { color: var(--muted); font-size: 0.95rem; }
 
+  .note { margin: 18px 0 0; max-width: 420px; color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
   footer { padding: 40px 0 56px; border-top: 1px solid var(--line); }
   footer p { margin: 0 0 8px; color: var(--muted); font-size: 0.9rem; max-width: 70ch; }
 
@@ -197,7 +231,14 @@
     .hero .wrap, .split { grid-template-columns: 1fr; gap: 32px; }
     .hero-photo { order: -1; max-width: 420px; }
     .split.reverse .photo { order: 0; }
+    .format { grid-template-columns: 1fr; gap: 8px; }
     .photo { max-width: 460px; }
+    #approach .bg-photo {
+      width: 100%;
+      opacity: 0.2;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 20%, #000 80%, transparent 100%);
+              mask-image: linear-gradient(to bottom, transparent 0, #000 20%, #000 80%, transparent 100%);
+    }
     section { padding: 56px 0; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -210,9 +251,9 @@
 
 <nav class="nav" aria-label="Разделы сайта">
   <div class="wrap">
-    <a href="#approach">Подход</a>
+    <a href="#why">Подход</a>
     <a href="#about">Обо мне</a>
-    <a href="#formats">Форматы</a>
+    <a href="#formats">Работа и цены</a>
     <a href="#publications">Публикации</a>
     <a href="#contacts">Контакты</a>
   </div>
@@ -222,12 +263,11 @@
   <div class="wrap">
     <div>
       <h1>Анастасия Царькова</h1>
-      <p class="role">Психолог. Телесно-ориентированная терапия</p>
-      <p class="lead">Работаю с эмоциональным онемением и состояниями отключённости. Принимаю онлайн и очно в Ереване.</p>
+      <p class="role">Психолог-консультант. Телесно-ориентированный подход</p>
+      <p class="lead">Понимаете, что с вами происходит, можете это объяснить, но не чувствуете? Жизнь будто идёт за стеклом. Я телесно-ориентированный психолог-консультант. В работе мы обращаем внимание на то, что происходит в теле.</p>
       <div class="actions">
-        <a class="btn" data-link="telegramContact">Написать в Telegram</a>
-        <a class="btn" data-link="whatsapp">Написать в WhatsApp</a>
-        <a class="btn ghost" data-link="telegramChannel">Канал «Царство сонных»</a>
+        <a class="btn big" data-link="telegramContact">Связаться в Telegram</a>
+        <a class="btn ghost big" data-link="whatsapp">Написать в WhatsApp</a>
       </div>
     </div>
     <figure class="hero-photo">
@@ -239,44 +279,56 @@
 <main>
 
 <section id="approach">
-  <div class="wrap split">
-    <div>
-      <h2>С чем ко мне приходят</h2>
-      <ul class="signs">
-        <li>Эмоций будто нет или они приглушены: ни радости, ни злости, ни грусти.</li>
-        <li>Ощущение, что смотришь на свою жизнь со стороны.</li>
-        <li>Голова работает отлично, дела делаются, а внутри нет отклика.</li>
-        <li>После долгого напряжения ничего не включается обратно.</li>
-      </ul>
-      <p class="text">Обычно это люди, которые много думают, хорошо справляются и не очень верят в «поговорите о детстве, и всё пройдёт». Мне это понятно, я сама так работаю: сначала разобраться, как всё устроено, потом проверять на практике.</p>
-      <p class="text">Когда чувств не слышно, разговоров о чувствах часто недостаточно. Поэтому я работаю через тело: внимание к ощущениям, к дыханию, к тому, где именно в теле «выключено». Разговор остаётся, но тело становится ещё одним источником информации. Между встречами я даю небольшие практики и наблюдения, чтобы работа не заканчивалась на сессии.</p>
-    </div>
-    <div class="photo">
-      <img src="approach.jpg" width="900" height="1260" loading="lazy" alt="Практика с вниманием к телу: рука на груди">
-    </div>
+  <div class="bg-photo" role="img" aria-label="Практика с вниманием к телу: рука на груди"></div>
+  <div class="wrap">
+    <h2>С чем ко мне приходят</h2>
+    <p class="text">Обычно это люди, у которых снаружи всё в порядке: работа, отношения, планы. А внутри:</p>
+    <ul class="signs">
+      <li>чувства понятны головой, но не проживаются: «я знаю, что должен радоваться»;</li>
+      <li>радость потускнела, всё просто «нормально», не больше;</li>
+      <li>в памяти не всплывает, когда в последний раз была радость или злость;</li>
+      <li>дни похожи один на другой, будто их можно перемотать и ничего не потерять;</li>
+      <li>ощущение нереальности, будто смотрите на свою жизнь со стороны или через экран;</li>
+      <li>тело как чужое: зажатые плечи и челюсть, задержанное дыхание, вечно холодные руки, усталость, которую не снимают ни сон, ни отпуск;</li>
+      <li>тело внезапно «подводит»: спина, желудок, голова, приступы тревоги, а врачи говорят, что всё в порядке;</li>
+      <li>или наоборот: любое ощущение пугает, и сигналы тела вместо понимания вызывают панику;</li>
+      <li>внутри пустота, которую не заполняют ни еда, ни сериалы, ни люди;</li>
+      <li>вы уже ходили к психологу, но сессии свелись к пересказу недели. Вы и так всё анализируете и раскладываете по полочкам, от этого голова напрягается ещё больше, а легче не становится.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <h2>Почему через тело</h2>
+    <p class="text">Если вы много анализируете, то, скорее всего, уже знаете про себя почти всё. Проблема не в знании. Чувства живут не в голове, а в дыхании, в мышцах, в том, как мы держим плечи, размахиваем руками при разговоре и двигаем бёдрами при ходьбе.</p>
+    <p class="text">Когда долго было небезопасно чувствовать, психика делает умную вещь: убавляет громкость. Тело зажимается, дыхание становится поверхностным, и вместе с болью приглушается всё остальное: радость, интерес, вкус к жизни.</p>
+    <p class="text">Иногда нужно не обсудить и понять ещё раз, а впервые почувствовать.</p>
   </div>
 </section>
 
 <section id="about">
   <div class="wrap split reverse">
-    <div class="photo">
+    <div class="photo soft">
       <img src="about.jpg" width="900" height="1260" loading="lazy" alt="Анастасия Царькова">
     </div>
     <div>
       <h2>Обо мне</h2>
-      <!-- ЧЕРНОВИК: текст собран из немногих известных фактов. Заменить на реальную историю. -->
       <p class="text">В психологию я пришла из прикладной информатики. Привыкла иметь дело со сложными системами и искать, где именно что-то ломается. С людьми это работает иначе, но привычка не принимать ничего на веру осталась.</p>
+      <p class="text">Но дорога была и личной: я пришла в психологию изнутри. Годами жила как в тумане: хроническая усталость, пустота, непонимание, кто я и чего хочу. Умом понимала всё, а не чувствовала ничего.</p>
       <p class="text">Первое время я больше занималась выгоранием. Постепенно стало ясно, что самое интересное и самое недооценённое лежит глубже: состояния, когда человек перестаёт чувствовать. Именно с ними я сейчас работаю чаще всего.</p>
-      <p class="text">Метод, на который я опираюсь, телесно-ориентированная терапия. Я училась в рамках интегративной психологии и по-прежнему считаю, что одним методом всё не решается, поэтому подход к каждому человеку собираю отдельно.</p>
+      <p class="text">Поэтому на сессиях немного теории и много внимания к тому, что происходит с вами прямо сейчас. Мы не рассуждаем, «что со мной не так», а смотрим, как это ощущается и проживается.</p>
+      <p class="text">Основной подход — телесно-ориентированный. Училась в рамках интегративной психологии и по-прежнему считаю, что одним методом всё не решается, поэтому точечно использую техники эмоционально-образной терапии, гештальта, КПТ.</p>
 
       <details class="edu">
         <summary>Образование и документы</summary>
         <ul>
-          <li>Высшее образование: прикладная информатика</li>
-          <li>Профессиональная переподготовка по психологии</li>
-          <li>Обучение интегративной психологии, телесно-ориентированная терапия</li>
+          <li><span class="hours">700 часов.</span> Диплом о профессиональной переподготовке «Психолог-практик. Интегративный подход», Международный университет интегративной психологии, Москва, 2025. <a href="doc-700.jpg" target="_blank" rel="noopener">скан</a></li>
+          <li><span class="hours">MBA.</span> «Practitioner psychologist. The integrative approach», Open European Academy of Economics &amp; Politics, Прага, 2025. <a href="doc-mba.jpg" target="_blank" rel="noopener">скан</a></li>
+          <li><span class="hours">300 часов.</span> Удостоверение о повышении квалификации «Телесно-ориентированная терапия», Международный университет интегративной психологии, Москва, 2025. <a href="doc-300.jpg" target="_blank" rel="noopener">скан</a></li>
+          <li><span class="hours">200 часов.</span> Удостоверение о повышении квалификации «Основы стресс-менеджмента и профилактика профессионального выгорания», Институт профессионального образования, Москва, 2025. <a href="doc-200.jpg" target="_blank" rel="noopener">скан</a></li>
+          <li>Высшее образование: прикладная информатика.</li>
         </ul>
-        <div class="docs" id="docs"></div>
       </details>
     </div>
   </div>
@@ -284,22 +336,49 @@
 
 <section id="formats">
   <div class="wrap">
-    <h2>Как мы можем работать</h2>
-    <div class="formats">
-      <div class="format">
+    <h2>Как проходит работа</h2>
+
+    <div class="format">
+      <div class="head">
         <h3>Онлайн</h3>
-        <p>Индивидуальные консультации из любой точки мира. Нужны только связь и место, где вас никто не прервёт.</p>
+        <p class="meta">Из любой точки мира. Сессия 1,5 часа (90 минут).</p>
+        <p class="price">3000 RUB / 35 EUR / 15 000 AMD</p>
+        <p class="meta">Оплата картой.</p>
       </div>
-      <div class="format">
-        <h3>Очно в Ереване</h3>
-        <p>Индивидуальные встречи. Для телесной работы живой формат даёт больше, но онлайн тоже работает.</p>
-      </div>
-      <div class="format">
-        <h3>Практики между встречами</h3>
-        <p>В обоих форматах вы получаете небольшие практики и задания на наблюдение, чтобы замечать изменения в обычной жизни.</p>
+      <div class="body">
+        <p>С телом можно работать и так. Мы разговариваем, а я обращаю внимание на то, что происходит с телом, пока вы говорите: где задерживается дыхание, что делают руки, где напряжение.</p>
+        <p>Используем простые упражнения на дыхание, движение и ощущения. Никакой акробатики, всё можно делать сидя перед камерой.</p>
       </div>
     </div>
-    <p class="text muted" style="margin-top: 36px;">Чтобы записаться, напишите мне в Telegram или WhatsApp. Коротко опишите, что происходит, и мы договоримся о времени.</p>
+
+    <div class="format">
+      <div class="head">
+        <h3>Очно в Ереване</h3>
+        <p class="meta">Сессия 1,5 часа (90 минут).</p>
+        <p class="price">20 000 AMD</p>
+        <p class="meta">Оплата наличными или картой.</p>
+      </div>
+      <div class="body">
+        <p>Если вы видели в интернете телесную терапию с тряской и криками, здесь будет по-другому. Это спокойная и глубокая работа, и в первую очередь ваша собственная. Я не «делаю» с вами что-то: заметить и прожить происходящее предстоит вам самим.</p>
+        <p>Сначала много практики на то, чтобы почувствовать границы своего тела и свои ощущения: где я заканчиваюсь, что во мне происходит, когда я стою, дышу, двигаюсь. Потом переходим к тому, как вы находитесь среди других людей: дистанция, опора, умение занять место, сказать «нет» и выдержать контакт.</p>
+        <p>Часть упражнений выполняется в контакте со мной. Всё только с вашего согласия и в вашем темпе.</p>
+      </div>
+    </div>
+
+    <div class="format">
+      <div class="head">
+        <h3>Между встречами</h3>
+      </div>
+      <div class="body">
+        <p>В любом формате между встречами предлагаются небольшие практики или наблюдения за собой. Работа не ограничивается встречей раз в неделю: она продолжается в обычной жизни, когда вы начинаете замечать себя в ней.</p>
+      </div>
+    </div>
+
+    <ul class="terms">
+      <li>Начинаем с бесплатного знакомства в переписке: обсуждаем запрос и решаем, подходим ли мы друг другу. Чтобы понять, подходит ли вам такая работа, обычно нужно 4–5 встреч.</li>
+      <li>Можно совмещать очный и онлайн формат встреч.</li>
+      <li>Рекомендуемая частота: раз в неделю или раз в две недели.</li>
+    </ul>
   </div>
 </section>
 
@@ -317,7 +396,7 @@
       </a>
       <a class="pub" data-link="telegramChannel">
         <h3>Канал «Царство сонных»</h3>
-        <p>Мои основные тексты и размышления выходят здесь.</p>
+        <p>Мои мысли о психологии и жизни.</p>
       </a>
     </div>
   </div>
@@ -327,17 +406,21 @@
   <div class="wrap split">
     <div>
       <h2>Контакты</h2>
-      <p class="text">Проще всего написать в мессенджер. Отвечаю лично.</p>
+      <p class="text">Если узнали себя, напишите. Можно своими словами, даже если звучит как «я не знаю, что со мной, просто всё как-то не так».</p>
+      <div class="actions">
+        <a class="btn big" data-link="telegramContact">Связаться в Telegram</a>
+        <a class="btn ghost big" data-link="whatsapp">Написать в WhatsApp</a>
+      </div>
       <ul class="contact-links">
-        <li data-wrap="telegramContact"><a data-link="telegramContact">Telegram <span>написать</span></a></li>
-        <li data-wrap="whatsapp"><a data-link="whatsapp">WhatsApp <span>написать</span></a></li>
         <li data-wrap="telegramChannel"><a data-link="telegramChannel">Telegram-канал <span>читать</span></a></li>
+        <li data-wrap="instagram"><a data-link="instagram">Instagram* <span>смотреть</span></a></li>
+        <li data-wrap="tiktok"><a data-link="tiktok">TikTok <span>смотреть</span></a></li>
         <li data-wrap="youtube"><a data-link="youtube">YouTube <span>смотреть</span></a></li>
-        <li data-wrap="instagram"><a data-link="instagram">Instagram <span>смотреть</span></a></li>
         <li data-wrap="b17"><a data-link="b17">б17 <span>профиль</span></a></li>
       </ul>
+      <p class="note" data-wrap="instagram">* Instagram принадлежит компании Meta, которая признана экстремистской организацией и запрещена в РФ.</p>
     </div>
-    <div class="photo">
+    <div class="photo soft">
       <img src="contact.jpg" width="800" height="1120" loading="lazy" alt="Анастасия Царькова">
     </div>
   </div>
@@ -347,8 +430,9 @@
 
 <footer>
   <div class="wrap">
-    <p>© 2026 Анастасия Царькова (Царькова А.Д.), психолог.</p>
-    <p>Консультация психолога не заменяет медицинскую помощь. Если вам нужна срочная помощь, обратитесь в местную службу экстренной помощи.</p>
+    <p>© 2026 Анастасия Царькова (Царькова А.Д.), психолог-консультант.</p>
+    <p>Сайт является визиткой и носит исключительно информационный характер. Он не является публичной офертой. На сайте нет форм, регистрации, счётчиков и аналитики, сайт не собирает и не обрабатывает персональные данные посетителей.</p>
+    <p>Консультации психолога-консультанта не являются медицинской услугой, не заменяют лечение и не предполагают постановки диагнозов. Результат работы не гарантируется. Если вам нужна срочная помощь, обратитесь в местную службу экстренной помощи.</p>
   </div>
 </footer>
 
@@ -358,17 +442,14 @@
      Пустая ссылка ("") просто скрывает кнопку на сайте.
      ============================================================ */
   var LINKS = {
-    telegramChannel: "https://t.me/anpsypp",
-    telegramContact: "",   // личный Telegram для записи, например "https://t.me/ваш_ник"
+    telegramChannel: "https://t.me/+CzrJQFywdMRlZDBi",
+    telegramContact: "https://t.me/anpsypp",   // личные сообщения в Telegram
     whatsapp: "",          // например "https://wa.me/374XXXXXXXX" (номер без плюса и пробелов)
     youtube: "",           // ссылка на канал или видео
-    instagram: "",         // например "https://instagram.com/ваш_ник"
+    instagram: "https://www.instagram.com/anpsypp/",
+    tiktok: "https://www.tiktok.com/@anpsypp0",
     b17: "https://www.b17.ru/tsarkova_anastasiya/"
   };
-
-  /* Сканы документов: положите файлы рядом с index.html и перечислите здесь,
-     например: [{src: "diploma-1.jpg", alt: "Диплом о переподготовке"}] */
-  var DOCS = [];
 
   document.querySelectorAll("[data-link]").forEach(function (el) {
     var url = LINKS[el.getAttribute("data-link")];
@@ -384,15 +465,6 @@
     if (!LINKS[el.getAttribute("data-wrap")]) { el.hidden = true; }
   });
 
-  var docsBox = document.getElementById("docs");
-  DOCS.forEach(function (d) {
-    var a = document.createElement("a");
-    a.href = d.src; a.target = "_blank"; a.rel = "noopener";
-    var img = document.createElement("img");
-    img.src = d.src; img.alt = d.alt || "Документ об образовании"; img.loading = "lazy";
-    a.appendChild(img); docsBox.appendChild(a);
-  });
-  if (!DOCS.length) { docsBox.hidden = true; }
 </script>
 </body>
 </html>
