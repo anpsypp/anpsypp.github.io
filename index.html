@@ -257,6 +257,11 @@
   }
   .pub:hover { border-color: var(--accent); }
   .pub p { color: var(--muted); margin: 0; }
+  .pub-links { list-style: none; margin: 16px 0 0; padding: 0; }
+  .pub-links li { border-top: 1px solid var(--line); }
+  .pub-links a { display: block; padding: 10px 0; text-decoration: none; }
+  .pub-links a:hover { color: var(--accent-hover); }
+  div.pub:hover { border-color: transparent; }
 
   /* contacts */
   .contact-links { list-style: none; margin: 36px 0 0; padding: 0; max-width: 420px; }
@@ -446,10 +451,15 @@
         <h3>Статьи на б17</h3>
         <p>Тексты об эмоциональном онемении, диссоциации, тревоге и поиске себя.</p>
       </a>
-      <a class="pub" data-link="youtube">
-        <h3>Видео на YouTube</h3>
-        <p>Разбор темы в формате видео.</p>
-      </a>
+      <div class="pub" data-wrap="youtube">
+        <h3>YouTube</h3>
+        <p>Как уснуть, если обычные советы не помогают: разбор от «много мыслей» до «постоянно верчусь», в том числе состояний вроде «голове неудобно лежать, ноги хочется согнуть». И авторская практика для тела перед сном.</p>
+        <ul class="pub-links">
+          <li data-wrap="video1"><a data-link="video1">Как уснуть, если обычные советы не помогают?</a></li>
+          <li data-wrap="video2"><a data-link="video2">Практика для тела перед сном</a></li>
+          <li data-wrap="youtube"><a data-link="youtube">Весь канал</a></li>
+        </ul>
+      </div>
       <a class="pub" data-link="telegramChannel">
         <h3>Канал «Царство сонных»</h3>
         <p>Мои мысли о психологии и жизни.</p>
@@ -501,7 +511,9 @@
     telegramChannel: "https://t.me/+CzrJQFywdMRlZDBi",
     telegramContact: "https://t.me/anpsypp",   // личные сообщения в Telegram
     whatsapp: "",          // например "https://wa.me/374XXXXXXXX" (номер без плюса и пробелов)
-    youtube: "",           // ссылка на канал или видео
+    youtube: "https://www.youtube.com/@antsarpsy",
+    video1: "https://youtu.be/hJ-mQAocCAk",   // видео «Как уснуть»
+    video2: "https://youtu.be/8ix9ej1csTo",   // практика для тела перед сном
     instagram: "https://www.instagram.com/anpsypp/",
     tiktok: "https://www.tiktok.com/@anpsypp0",
     b17: "https://www.b17.ru/tsarkova_anastasiya/"
