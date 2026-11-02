@@ -745,6 +745,24 @@
      ССЫЛКИ И ДОКУМЕНТЫ. Здесь меняется всё, что зависит от вас.
      Пустая ссылка ("") просто скрывает кнопку на сайте.
      ============================================================ */
+  /* при обновлении страницы всегда возвращаемся наверх и убираем «#раздел» из адреса */
+  (function () {
+    if ("scrollRestoration" in history) { history.scrollRestoration = "manual"; }
+    var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+    var isReload = nav && nav.type === "reload";
+    if (!isReload) { return; }
+    function toTop() {
+      var root = document.documentElement;
+      var prev = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      window.scrollTo(0, 0);
+      root.style.scrollBehavior = prev;
+    }
+    if (location.hash) { history.replaceState(null, "", location.pathname + location.search); }
+    toTop();
+    window.addEventListener("load", toTop);
+  })();
+
   var LINKS = {
     telegramChannel: "https://t.me/+CzrJQFywdMRlZDBi",
     telegramContact: "https://t.me/anpsypp",   // личные сообщения в Telegram
