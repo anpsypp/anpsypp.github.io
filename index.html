@@ -163,6 +163,21 @@
             mask-image: radial-gradient(ellipse 72% 68% at 50% 46%, #000 52%, transparent 100%);
   }
 
+  /* about: the photo is the background of the block */
+  #about { position: relative; overflow: hidden; }
+  #about .bg-photo {
+    position: absolute; top: 0; bottom: 0; left: 0; width: 56%;
+    background: url("about.jpg") center 18% / cover no-repeat;
+    opacity: 0.5;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to left, transparent 0, #000 60%), linear-gradient(to bottom, transparent 0, #000 22%, #000 78%, transparent 100%);
+    -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(to left, transparent 0, #000 60%), linear-gradient(to bottom, transparent 0, #000 22%, #000 78%, transparent 100%);
+            mask-composite: intersect;
+  }
+  #about .wrap { position: relative; z-index: 1; }
+  .about-text { margin-left: auto; max-width: 540px; }
+
   /* approach: the photo is the background of the whole block */
   #approach { position: relative; overflow: hidden; }
   #approach .bg-photo {
@@ -268,6 +283,13 @@
     .split.reverse .photo { order: 0; }
     .format { grid-template-columns: 1fr; gap: 8px; }
     .photo { max-width: 460px; }
+    #about .bg-photo {
+      width: 100%;
+      opacity: 0.2;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 20%, #000 80%, transparent 100%);
+              mask-image: linear-gradient(to bottom, transparent 0, #000 20%, #000 80%, transparent 100%);
+    }
+    .about-text { margin-left: 0; max-width: none; }
     #approach .bg-photo {
       width: 100%;
       opacity: 0.2;
@@ -343,11 +365,9 @@
 </section>
 
 <section id="about">
-  <div class="wrap split reverse">
-    <div class="photo soft">
-      <img src="about.jpg" width="900" height="1260" loading="lazy" alt="Анастасия Царькова">
-    </div>
-    <div>
+  <div class="bg-photo" role="img" aria-label="Анастасия Царькова"></div>
+  <div class="wrap about-wrap">
+    <div class="about-text">
       <h2>Обо мне</h2>
       <p class="text">В психологию я пришла из прикладной информатики. Привыкла иметь дело со сложными системами и искать, где именно что-то ломается. С людьми это работает иначе, но привычка не принимать ничего на веру осталась.</p>
       <p class="text">Но дорога была и личной: я пришла в психологию изнутри. Годами жила как в тумане: хроническая усталость, пустота, непонимание, кто я и чего хочу. Умом понимала всё, а не чувствовала ничего.</p>
