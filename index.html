@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Царькова А.Д. — психолог</title>
+<meta name="description" content="Психолог. Работаю с эмоциональным онемением и состояниями отключённости. Индивидуальные консультации.">
+<style>
+  :root {
+    --fog: #dde2e4;
+    --ink: #1f2a33;
+    --slate: #55656f;
+    --deep: #2c4757;
+    --deep-hover: #20384a;
+    --paper: #f3f5f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fog: #1a2228;
+      --ink: #e4e9eb;
+      --slate: #9aa9b3;
+      --deep: #8fb3c7;
+      --deep-hover: #a9c6d6;
+      --paper: #11171b;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--fog);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  main {
+    width: 100%;
+    max-width: 560px;
+  }
+
+  h1 {
+    margin: 0 0 20px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-size: clamp(2.6rem, 11vw, 4.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    /* the one memorable moment: the name comes into focus */
+    animation: focus 2.4s ease-out both;
+  }
+
+  @keyframes focus {
+    from { filter: blur(14px); opacity: 0.25; }
+    to   { filter: blur(0);    opacity: 1; }
+  }
+
+  .role {
+    margin: 0 0 8px;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+
+  .about {
+    margin: 0 0 36px;
+    max-width: 44ch;
+    color: var(--slate);
+  }
+
+  .button {
+    display: inline-block;
+    padding: 14px 24px;
+    border-radius: 4px;
+    background: var(--deep);
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.15s;
+  }
+  .button:hover { background: var(--deep-hover); }
+  .button:focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    h1 { animation: none; }
+  }
+</style>
+</head>
+<body>
+  <main>
+    <h1>Царькова А.Д.</h1>
+    <p class="role">Психолог</p>
+    <p class="about">Работаю с эмоциональным онемением и состояниями отключённости. Принимаю на индивидуальных консультациях.</p>
+    <a class="button" href="https://t.me/anpsypp">Канал «Царство сонных» в Telegram</a>
+  </main>
+</body>
+</html>
